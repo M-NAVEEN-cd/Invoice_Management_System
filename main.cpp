@@ -2,32 +2,41 @@
 #include "invoice.cpp"
 using namespace std;
 
-class customer:private invoice
+class customer
 {
     private:
-    vector<int>customer_details;
+    static int cid;
+    string customer_name;
+    static vector<customer>customer_details;
     public:
     
     customer()
     {
-        id++;
-        customer_details.push_back(id);
+
     }
+    customer(string name)
+    {
+        cid++;   
+        this->customer_name=name;
+        customer_details.push_back(*this);
+    }
+
     void showCustomers()
     {
         for(int i=0;i<customer_details.size();i++)
         {
-            cout<<customer_details[i]<<endl;
+            cout<<"CUSTOMER ID: "<<customer_details[i].cid<<endl;
+            cout<<"CUSTOMER NAME: "<<customer_details[i].customer_name<<endl;
         }
-    }
-    void showDetails()
-    {
-        cout<<"Customer Details"<<endl;
     }
 };
 
+int customer::cid=0;
+vector<customer> customer::customer_details;
+
 void display()
 {
+    customer c;
     bool flag=1;
     while(flag)
     {
@@ -45,11 +54,15 @@ void display()
         cout<<"7.Exit"<<endl;
         cout<<"ENTER THE CHOICE : ";
         cin>>choice;
+        cout<<"-----------------------------------------------------------------------------------";
         switch(choice)
         {
             case 1:
             {
-                customer c;
+                string s;
+                cout<<"ENTER THE CUSTOMER NAME: ";
+                cin>>s;
+                customer c(s);
                 break;
             }
             case 2:
@@ -62,7 +75,6 @@ void display()
             }
             case 4:
             {
-                customer c;
                 c.showCustomers();
                 break;
             }

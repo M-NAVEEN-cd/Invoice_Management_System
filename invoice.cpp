@@ -5,15 +5,19 @@ using namespace std;
 class invoice
 {
     public:
-    static int id;
+    static int invoice_id;
     private:
     vector<int>invoice_details;
     public:
     invoice(){}
     
-    virtual void showDetails()
+    void add_item(int item_id,int quantity,int price)
+    {
+
+    }
+    void showDetails()
     {
         
     }
 };
-int invoice::id=0;
+int invoice::invoice_id=0;
