@@ -5,7 +5,8 @@ using namespace std;
 class customer
 {
     private:
-    static int cid;
+    static int id;
+    int cid;
     string customer_name;
     static vector<customer>customer_details;
     public:
@@ -16,7 +17,7 @@ class customer
     }
     customer(string name)
     {
-        cid++;   
+        this->cid=id++;   
         this->customer_name=name;
         customer_details.push_back(*this);
     }
@@ -31,7 +32,7 @@ class customer
     }
 };
 
-int customer::cid=0;
+int customer::id=1;
 vector<customer> customer::customer_details;
 
 void display()
@@ -54,7 +55,7 @@ void display()
         cout<<"7.Exit"<<endl;
         cout<<"ENTER THE CHOICE : ";
         cin>>choice;
-        cout<<"-----------------------------------------------------------------------------------";
+        cout<<"-----------------------------------------------------------------------------------"<<endl;
         switch(choice)
         {
             case 1:
